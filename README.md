@@ -1,8 +1,8 @@
 # PhaTriAGE
 
-**PhaTriAGE — Phage Tri-class Lifestyle Assignment with Genomic Evidence** predicts bacteriophage lifestyle as **Virulent**, **Temperate**, or **Chronic** from nucleotide FASTA files. It then adds an independent ORF/HMMER annotation layer for conserved temperate-associated markers.
+**PhaTriAGE â Phage Tri-class Lifestyle Assignment with Genomic Evidence** predicts bacteriophage lifestyle as **Virulent**, **Temperate**, or **Chronic** from nucleotide FASTA files. It then adds an independent ORF/HMMER annotation layer for conserved temperate-associated markers.
 
-PhaTriAGE uses the ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
+PhaTriAGE uses the final conflict-resolved `+462` ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
 
 ## Output
 
@@ -27,6 +27,7 @@ Clone this repository, then create one of the isolated environments:
 ```bash
 mamba env create -f environments/cpu.yml
 conda activate phatriage-cpu
+python -m pip install -e .
 ```
 
 or, on a CUDA system:
@@ -34,6 +35,7 @@ or, on a CUDA system:
 ```bash
 mamba env create -f environments/gpu.yml
 conda activate phatriage-gpu
+python -m pip install -e .
 ```
 
 Download the two release assets and install them:
