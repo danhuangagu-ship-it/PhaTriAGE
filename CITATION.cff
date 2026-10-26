@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: "PhaTriAGE: Phage Tri-class Lifestyle Assignment with Genomic Evidence"
+message: "If you use PhaTriAGE, please cite the associated manuscript and the upstream ProkBERT, BACPHLIP, and PHROGs resources."
+type: software
+authors:
+  - family-names: Huang
+    given-names: Dan
+version: 0.1.0
+date-released: 2026-10-26
+license: MIT
