@@ -8,10 +8,11 @@ dependencies:
   - hmmer=3.4
   - pytorch=2.13.*
   - cpuonly
+  # Use conda builds for compiled packages on older Linux clusters.
+  - numpy=2.2.6
+  - pandas=2.3.3
+  - safetensors=0.8.0
+  - huggingface_hub=0.36.2
   - pip:
       - pyrodigal-gv==0.3.2
       - transformers==4.57.6
-      - pandas==2.3.3
-      - numpy==2.2.6
-      - safetensors==0.8.0
-      - huggingface-hub==0.36.2
