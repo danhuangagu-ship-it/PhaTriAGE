@@ -2,7 +2,7 @@
 
 **PhaTriAGE — Phage Tri-class Lifestyle Assignment with Genomic Evidence** predicts bacteriophage lifestyle as **Virulent**, **Temperate**, or **Chronic** from nucleotide FASTA files. It then adds an independent ORF/HMMER annotation layer for conserved temperate-associated markers.
 
-PhaTriAGE uses the final conflict-resolved `+462` ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
+PhaTriAGE uses the ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
 
 ## Output
 
