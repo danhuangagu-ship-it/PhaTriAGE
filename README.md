@@ -1,8 +1,8 @@
 # PhaTriAGE
 
-**PhaTriAGE Phage Tri-class Lifestyle Assignment with Genomic Evidence** predicts bacteriophage lifestyle as **Virulent**, **Temperate**, or **Chronic** from nucleotide FASTA files. It then adds an independent ORF/HMMER annotation layer for conserved temperate-associated markers.
+**PhaTriAGE — Phage Tri-class Lifestyle Assignment with Genomic Evidence** predicts bacteriophage lifestyle as **Virulent**, **Temperate**, or **Chronic** from nucleotide FASTA files. It then adds an independent ORF/HMMER annotation layer for conserved temperate-associated markers.
 
-PhaTriAGE uses the ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
+PhaTriAGE uses the final conflict-resolved `+462` ProkBERT Mini-long model with full fine-tuning and the original linear classification head. Classification and marker annotation are independent: marker hits never alter the predicted class or probability.
 
 ## Output
 
@@ -20,30 +20,30 @@ Strong evidence is restricted to integrase, excisionase/RDF, and immunity-repres
 
 The output directory also contains all three class probabilities, detailed HMM hits, checksums, and provenance.
 
-## Installation
+## Quick installation
 
-Clone this repository, then create one of the isolated environments:
+Clone the repository and run one setup command. It creates the selected environment, installs PhaTriAGE, downloads both release assets, verifies their SHA-256 checksums, and runs `phatriage doctor`.
 
 ```bash
-mamba env create -f environments/cpu.yml
+git clone https://github.com/danhuangagu-ship-it/PhaTriAGE.git
+cd PhaTriAGE
+bash install.sh cpu
 conda activate phatriage-cpu
-python -m pip install -e .
 ```
 
-or, on a CUDA system:
+For a CUDA GPU installation, use:
 
 ```bash
-mamba env create -f environments/gpu.yml
+bash install.sh gpu
 conda activate phatriage-gpu
-python -m pip install -e .
 ```
 
-Download the two release assets and install them:
+The setup script uses Mamba when available and otherwise uses Conda. Assets are installed by default under `~/.cache/phatriage/assets`; normal users do not need to set `PHATRIAGE_ASSETS`.
+
+To reinstall only the model and marker assets:
 
 ```bash
-bash scripts/install_assets.sh \
-  https://github.com/danhuangagu-ship-it/PhaTriAGE/releases/download/v0.1.0/phatriage-mini-long-full-add462-v1.tar.gz \
-  https://github.com/danhuangagu-ship-it/PhaTriAGE/releases/download/v0.1.0/temperate_marker_db_hmmer3_v1.tar.gz
+bash scripts/install_assets.sh
 phatriage doctor
 ```
 
@@ -54,7 +54,7 @@ Release asset SHA-256 checksums:
 | `phatriage-mini-long-full-add462-v1.tar.gz` | `e4a66f541e6a956199bb0b9289a6c79f0b46158eee64dc508e125c2b8d9de466` |
 | `temperate_marker_db_hmmer3_v1.tar.gz` | `8fe647cc4bd92f0a07cdc9cd38c3fe02e8cc5609ffb6cd4c759b2853e539e985` |
 
-The asset directory defaults to `~/.cache/phatriage/assets`. Set `PHATRIAGE_ASSETS` or pass `--assets` to use another location.
+Advanced users can pass an alternative asset directory to `scripts/install_assets.sh`, set `PHATRIAGE_ASSETS`, or pass `--assets` to an individual command.
 
 ## Usage
 
